@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.dropdown-avatar .dropdown-toggle::after {
+  position: absolute;
+  right: -11px;
+  top: 50%;
+}
+
+.card-room {
+  border: none;
+}
+
+.card-room img {
+  height: 200px;
+  border-radius: 20px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating i {
+  margin-right: 3px;
+}
+
+.carousel-room img {
+  height: 60vh;
+  object-fit: cover;
+}
+
+.list-group-item {
+  background-color: transparent;
+  color: black;
+  font-size: 20px;
+}
+
+.list-group-item:hover {
+  color: inherit;
+}
+
+.field-rating button {
+  background-color: transparent !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.field-rating .on {
+  color: #000;
+}
+
+.field-rating .off {
+  color: #ccc;
+}
