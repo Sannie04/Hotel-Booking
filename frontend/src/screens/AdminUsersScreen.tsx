@@ -55,7 +55,7 @@ const AdminUsersScreen = () => {
                                         <td>
                                             <Image
                                                 className="avatar"
-                                                src={user.avatar ? user.avatar : `/uploads/user-default.jpg`}
+                                                src={user.avatar ? user.avatar : `/uploads/${user.avatar}`}
                                                 alt="Avatar"
                                                 width="40"
                                                 height="40"

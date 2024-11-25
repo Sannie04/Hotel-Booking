@@ -145,17 +145,20 @@ useEffect(() => {
                     <span className="d-block mb-2">{room.address}</span>
                     <Rating reviews={room.ratings} />
                     <div className="carousel-room mt-3 mb-3">
-                        <Carousel>
-                            {room.images?.map((img: any) =>
-                                <Carousel.Item key={img._id}>
-                                    <img
-                                        className="d-block w-100"
-                                        src={img.image}
-                                        alt={img._id}
-                                    />
-                                </Carousel.Item>
-                            )}
-                        </Carousel>
+                    <Carousel>
+                                {room.images?.map((img: any, index: number) => (
+                                    <Carousel.Item key={index}>
+                                        <img
+                                            className="d-block w-100"
+                                            src={`/uploads/image_room/${img.image}`}
+                                            alt={room.name}
+                                            onError={(e) => {
+                                                e.currentTarget.src = "/uploads/default-room.jpeg"; // Use a placeholder image
+                                            }}
+                                        />
+                                    </Carousel.Item>
+                                ))}
+                            </Carousel>
                     </div>
                     <Row>
                         <Col xs={12} sm={12} md={8}>
@@ -224,7 +227,7 @@ useEffect(() => {
                                 
                                      {successBookingCreate && (
                                         <Message variant="success">
-                                            Your booking has been paymented
+                                         Đã Thanh Toán Thành Công!
                                         </Message>
                                      )}
 

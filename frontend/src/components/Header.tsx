@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <Container>
         <Navbar.Brand>
           <LinkContainer to="/">
-            <Navbar.Brand>Hotel Book</Navbar.Brand>
+            <Navbar.Brand>The Moon</Navbar.Brand>
           </LinkContainer>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

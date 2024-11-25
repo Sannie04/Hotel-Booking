@@ -7,7 +7,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination: function (req, file: any, cb) {
-    cb(null, "uploads/");
+    cb(null, "/uploads");
   },
   filename: function (req, file: any, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

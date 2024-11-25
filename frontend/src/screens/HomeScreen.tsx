@@ -51,7 +51,7 @@ const HomeScreen = () => {
           </>
         : (
           <>
-            <Message variant="info">No Room Available</Message>
+            <Message variant="info">Không Còn Phòng nào</Message>
           </>
         )}
       </Row>
