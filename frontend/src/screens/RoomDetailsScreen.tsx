@@ -93,7 +93,10 @@ useEffect(() => {
         if (checkInDate && checkOutDate) {
 
             // Calclate days of stay
-
+            if (checkOutDate <= checkInDate) {
+                // Xử lý lỗi: Ngày trả phòng phải sau ngày nhận phòng
+                return;
+            }
             const days = Math.abs(checkInDate - checkOutDate) / (1000 * 60 * 60 * 24);
 
             setDaysOfStay(days);
@@ -145,20 +148,23 @@ useEffect(() => {
                     <span className="d-block mb-2">{room.address}</span>
                     <Rating reviews={room.ratings} />
                     <div className="carousel-room mt-3 mb-3">
-                    <Carousel>
-                                {room.images?.map((img: any, index: number) => (
-                                    <Carousel.Item key={index}>
-                                        <img
-                                            className="d-block w-100"
-                                            src={`/uploads/image_room/${img.image}`}
-                                            alt={room.name}
-                                            onError={(e) => {
-                                                e.currentTarget.src = "/uploads/default-room.jpeg"; // Use a placeholder image
-                                            }}
-                                        />
-                                    </Carousel.Item>
-                                ))}
-                            </Carousel>
+                  <Carousel>
+    {room.images?.map((img: any, index: number) => (
+        <Carousel.Item key={index}>
+            <img
+                className="d-block w-100"
+                // Correct image path
+                src={`/uploads/image_room/${img.image}`}
+                alt={room.name}
+                onError={(e) => {
+                    // Placeholder if image fails to load
+                    e.currentTarget.src = "/uploads/default-room.jpeg"; 
+                }}
+            />
+        </Carousel.Item>
+    ))}
+</Carousel>
+
                     </div>
                     <Row>
                         <Col xs={12} sm={12} md={8}>

@@ -6,7 +6,7 @@ import path from 'path';
 import connectDB from './config/db';
 import { errorHandler, notFound } from './middlewares/errorMiddleware';
 
-// Routes
+// Các Routes
 import roomRoutes from './routes/roomRoutes';
 import userRoutes from './routes/userRoutes';
 import bookingRoutes from './routes/bookingRoutes';
@@ -16,34 +16,34 @@ const app: Application = express();
 
 dotenv.config();
 
+// Kết nối đến database
 connectDB();
+
+// Phục vụ các tệp tĩnh từ thư mục "uploads"
+
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
-
-// Default 
-app.get("/api", (req: Request, res: Response)  => {
+// Route mặc định
+app.get("/api", (req: Request, res: Response) => {
     res.status(201).json({ message: "Welcome to Hotel Booking App" });
-})
+});
 
-// Room Route
+// Routes cho phòng, người dùng, và đặt phòng
 app.use("/api/rooms", roomRoutes);
-
-// User Route
 app.use("/api/users", userRoutes);
-
-// Booking Route
 app.use("/api/bookings", bookingRoutes);
 
-// Upload Route
+// Route upload ảnh
 app.use("/api/uploads", uploadRoutes);
 
+// Route cấu hình PayPal
 app.get("/api/config/paypal", (req, res) => {
   res.status(201).send(process.env.PAYPAL_CLIENT_ID);
 });
 
+// Middleware xử lý lỗi
 app.use(errorHandler);
 app.use(notFound);
 
